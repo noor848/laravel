@@ -17,6 +17,7 @@ class VerifyCsrfToken extends Middleware
         'http://localhost:8000/user/add',
         'http://localhost:8000/profile/add',
         'http://localhost:8000/post/update/*',
-        'http://localhost:8000/post/delete/*'
+        'http://localhost:8000/post/delete/*',
+        'http://localhost:8000/*/add/*'
     ];
 }

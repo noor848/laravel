@@ -16,18 +16,19 @@ use App\Http\Controllers\UserCOntroller;
 |
 */
 
-
-
 #Route::post("add",[PostController::class,"store"]);
-Route::post("add",[RoleController::class,"store"]);
+
+Route::post("{uId}/add/{idRole}",[RoleController::class,"store"]);
 Route::post("profile/add",[ProfileController::class,"store"]);
-#Route::post("user/add",[UserCOntroller::class,"store"]);
+
+Route::prefix('user')->group(function () {
+    Route::post("user/add",[UserCOntroller::class,"store"]);
+});
 
 Route::prefix('post')->group(function () {
-
     Route::get("/",[PostController::class,"index"]);
     Route::get("/{id}",[PostController::class,"getPost"]);
     Route::put("update/{id}",[PostController::class,"update"]);
-    Route::post("add",[PostController::class,"store"]);
+    Route::post("add/{id}",[PostController::class,"store"]);
     Route::delete("delete/{id}",[PostController::class,"delete"]);
 });
